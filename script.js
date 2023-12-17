@@ -64,7 +64,7 @@ operatorButtons.forEach((button) => {
 });
 
 decimal.addEventListener(`click`, () => {
-    if (display.textContent.includes(`.`)) {
+    if (decimal.disabled == false) {
         decimal.disabled = true;
     }
     else {
@@ -84,14 +84,46 @@ function calculateExpression() {
     calcOperator = ``;
 }
 
-equals.addEventListener(`click`, calculateExpression)
-
-backspace.addEventListener(`click`, () => {
+function removeCharacter() {
     display.textContent = display.textContent.slice(0, -1);
-});
-clear.addEventListener(`click`, () => {
+}
+
+function clearDisplay() {
     calcNum1 = 0;
     calcNum2 = 0;
     calcOperator = ``;
     display.textContent = ``;
+    decimal.disabled = false;
+}
+
+equals.addEventListener(`click`, calculateExpression);
+
+backspace.addEventListener(`click`, removeCharacter);
+
+clear.addEventListener(`click`, clearDisplay);
+
+document.addEventListener(`keydown`, (e) => {
+    const possibleKeys = `0123456789`;
+    const operatorKeys = `+-x/`;
+    if (operatorKeys.includes(e.key) && calcOperator == false) {
+        calcOperator = e.key;
+        display.textContent += e.key;
+        decimal.disabled = false;
+    }
+    else if (e.key == `.` && decimal.disabled == false) {
+        display.textContent += e.key;
+        decimal.disabled = true;
+    }
+    else if (possibleKeys.includes(e.key)) {
+        display.textContent += e.key;
+    } 
+    else if (e.key == `=` || e.key == `Enter`){
+        calculateExpression();
+    }
+    else if (e.key == `Backspace`) {
+        removeCharacter();
+    }
+    else if (e.key == `c`) {
+        clearDisplay();
+    }
 });
