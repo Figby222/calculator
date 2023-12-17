@@ -4,6 +4,10 @@ function multiply(num1, num2) {return num1 * num2;}
 function divide(num1, num2) {return num1 / num2;}
 
 function operate(num1, num2, operator) {
+
+    if (num2 == 0 && operator == `/`) {
+        return `You have 0 cookies and 0 friends`;
+    }
     result = NaN;
     switch(operator) {
         case `+`:
