@@ -43,13 +43,14 @@ const operatorButtons = document.querySelectorAll(`.operator.display`);
 Array.from(operatorButtons);
 const decimal = document.querySelector(`#decimal`);
 const equals = document.querySelector(`#equals`);
+const backspace = document.querySelector(`#backspace`);
 const clear = document.querySelector(`#clear`);
 
 numberButtons.forEach((button) => {
     button.addEventListener(`click`, (event) => {
         display.textContent += button.textContent;
-    })
-})
+    });
+});
 
 operatorButtons.forEach((button) => {
     button.addEventListener(`click`, (event) => {
@@ -59,8 +60,8 @@ operatorButtons.forEach((button) => {
         decimal.disabled = false;
         calcOperator = button.textContent;
         display.textContent += button.textContent;
-    })
-})
+    });
+});
 
 decimal.addEventListener(`click`, () => {
     if (display.textContent.includes(`.`)) {
@@ -69,7 +70,7 @@ decimal.addEventListener(`click`, () => {
     else {
         decimal.disabled = false;
     }
-})
+});
 
 function calculateExpression() {
     input = display.textContent;
@@ -84,9 +85,13 @@ function calculateExpression() {
 }
 
 equals.addEventListener(`click`, calculateExpression)
+
+backspace.addEventListener(`click`, () => {
+    display.textContent = display.textContent.slice(0, -1);
+});
 clear.addEventListener(`click`, () => {
     calcNum1 = 0;
     calcNum2 = 0;
     calcOperator = ``;
     display.textContent = ``;
-})
+});

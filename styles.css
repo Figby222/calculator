@@ -1,0 +1,23 @@
+* {
+    font-weight: bold;
+    font-size: 24px;
+}
+button {
+    color: rgb(0, 255, 0);
+}
+
+.number {
+    background: red;
+}
+
+.operator {
+    background: yellow;
+}
+
+#equals {
+    background: blue;
+}
+
+#backspace, #clear {
+    background: orchid;
+}
