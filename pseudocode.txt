@@ -1,0 +1,26 @@
+FUNCTION add(number1, number2)
+    RETURN sum of number1 and number2
+
+FUNCTION subtract(number1, number2)
+    RETURN difference of number1 and number2
+
+FUNCTION multiply(number1, number2)
+    RETURN quotient of number1 and number2
+
+FUNCTION divide(number1, number2)
+    RETURN dividend of number1 and number2
+
+FUNCTION operate(number1, number2, operator)
+    IF operator is `+`
+        RETURN add(number1, number2)
+    ELSE IF operator is `-`
+        RETURN subtract(number1, number2)
+    ELSE IF operator is `x`
+        RETURN multiply(number1, number2)
+    ELSE IF operator is `/`
+        RETURN divide(number1, number2)
+
+NUMBER calcNumber1 FROM user input
+NUMBER calcOperator FROM user input
+NUMBER calcNumber2 FROM user input
+
