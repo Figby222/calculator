@@ -41,6 +41,7 @@ const numberButtons = document.querySelectorAll(`.number.display`);
 Array.from(numberButtons);
 const operatorButtons = document.querySelectorAll(`.operator.display`);
 Array.from(operatorButtons);
+const decimal = document.querySelector(`#decimal`);
 const equals = document.querySelector(`#equals`);
 const clear = document.querySelector(`#clear`);
 
@@ -55,9 +56,19 @@ operatorButtons.forEach((button) => {
         if (calcOperator) {
             calculateExpression();
         }
+        decimal.disabled = false;
         calcOperator = button.textContent;
         display.textContent += button.textContent;
     })
+})
+
+decimal.addEventListener(`click`, () => {
+    if (display.textContent.includes(`.`)) {
+        decimal.disabled = true;
+    }
+    else {
+        decimal.disabled = false;
+    }
 })
 
 function calculateExpression() {
