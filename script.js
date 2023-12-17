@@ -53,15 +53,16 @@ equals.addEventListener(`click`, () => {
     }
     else if (input.includes(`/`)) {
         operator = `/`;
-    } else {
-        console.log(`ERROR`);
     }
+    
     input = input.split(operator);
     input = input.map((number) => parseInt(number));
     calcNum1 = input[0];
     calcNum2 = input[1];
-
     display.textContent = operate(calcNum1, calcNum2, operator);
+    calcNum1 = 0;
+    calcNum2 = 0;
+    operator = ``;
 })
 clear.addEventListener(`click`, () => {
     display.textContent = ``;
