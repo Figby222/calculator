@@ -63,7 +63,7 @@ operatorButtons.forEach((button) => {
 function calculateExpression() {
     input = display.textContent;
     input = input.split(calcOperator);
-    input = input.map((number) => parseInt(number));
+    input = input.map((number) => parseFloat(number));
     calcNum1 = input[0];
     calcNum2 = input[1];
     display.textContent = operate(calcNum1, calcNum2, calcOperator);
