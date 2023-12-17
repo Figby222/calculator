@@ -29,41 +29,42 @@ let calcOperator = ``;
 let input = ``;
 
 const display = document.querySelector(`#display`);
-const displayButtons = document.querySelectorAll(`.display`);
-Array.from(displayButtons);
+const numberButtons = document.querySelectorAll(`.number.display`);
+Array.from(numberButtons);
+const operatorButtons = document.querySelectorAll(`.operator.display`);
+Array.from(operatorButtons);
 const equals = document.querySelector(`#equals`);
 const clear = document.querySelector(`#clear`);
 
-displayButtons.forEach((button) => {
+numberButtons.forEach((button) => {
     button.addEventListener(`click`, (event) => {
         display.textContent += button.textContent;
     })
 })
 
-equals.addEventListener(`click`, () => {
+operatorButtons.forEach((button) => {
+    button.addEventListener(`click`, (event) => {
+        if (calcOperator) {
+            calculateExpression();
+        }
+        calcOperator = button.textContent;
+        display.textContent += button.textContent;
+    })
+})
+
+function calculateExpression() {
     input = display.textContent;
-    if (input.includes(`+`)) {
-        operator = `+`;
-    }
-    else if (input.includes(`-`)) {
-        operator = `-`;
-    }
-    else if (input.includes(`x`)) {
-        operator = `x`;
-    }
-    else if (input.includes(`/`)) {
-        operator = `/`;
-    }
-    
-    input = input.split(operator);
+    input = input.split(calcOperator);
     input = input.map((number) => parseInt(number));
     calcNum1 = input[0];
     calcNum2 = input[1];
-    display.textContent = operate(calcNum1, calcNum2, operator);
+    display.textContent = operate(calcNum1, calcNum2, calcOperator);
     calcNum1 = 0;
     calcNum2 = 0;
-    operator = ``;
-})
+    calcOperator = ``;
+}
+
+equals.addEventListener(`click`, calculateExpression)
 clear.addEventListener(`click`, () => {
     display.textContent = ``;
 })

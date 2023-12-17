@@ -26,11 +26,18 @@ NUMBER calcNumber2 FROM user input
 ARRAY input = []
 
 NODE display FROM querySelector(`#display`)
-NODELIST displayButtons FROM querySelectorAll(`button.display`)
+NODELIST numberButtons FROM querySelectorAll(`button.number`)
+NODELIST operatorButtons FROM querySelectorAll(`button.operator`)
 
-FOR EACH button in displayButtons
+FOR EACH button in numberButtons
     ADD click event listener
         APPEND button text TO display text
+
+FOR EACH button in operatorButtons
+    ADD click event listener
+        IF calcOperator
+            equals.dispatchEvent(`click`)
+            ADD operator text TO display text
 
 FOR equals
     ADD click event listener
