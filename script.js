@@ -44,6 +44,7 @@ Array.from(operatorButtons);
 const decimal = document.querySelector(`#decimal`);
 const equals = document.querySelector(`#equals`);
 const backspace = document.querySelector(`#backspace`);
+const backspace = document.querySelector(`#backspace`);
 const clear = document.querySelector(`#clear`);
 
 numberButtons.forEach((button) => {
@@ -62,6 +63,8 @@ operatorButtons.forEach((button) => {
         display.textContent += button.textContent;
     });
 });
+    });
+});
 
 decimal.addEventListener(`click`, () => {
     if (decimal.disabled == false) {
@@ -70,6 +73,7 @@ decimal.addEventListener(`click`, () => {
     else {
         decimal.disabled = false;
     }
+});
 });
 
 function calculateExpression() {
