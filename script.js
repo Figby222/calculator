@@ -28,7 +28,7 @@ function operate(num1, num2, operator) {
         return num1;
     }
 
-    return result;
+    return Math.round(result*10000)/10000;
 }
 
 let calcNum1 = 0;
