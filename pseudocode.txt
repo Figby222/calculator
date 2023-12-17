@@ -23,4 +23,28 @@ FUNCTION operate(number1, number2, operator)
 NUMBER calcNumber1 FROM user input
 NUMBER calcOperator FROM user input
 NUMBER calcNumber2 FROM user input
+ARRAY input = []
 
+NODE display FROM querySelector(`#display`)
+NODELIST displayButtons FROM querySelectorAll(`button.display`)
+
+FOR EACH button in displayButtons
+    ADD click event listener
+        APPEND button text TO display text
+
+FOR equals
+    ADD click event listener
+        input = display text
+        IF `+` in input
+            operator = `+`
+        ELSE IF `-` in input
+            operator = `-`
+        ELSE IF `x` in input
+            operator = `x`
+        else if `/` in input
+            operator = `/`
+        input.split(operator)
+        calcNumber1 = parseInt(input[0])
+        calcNumber2 = parseInt(input[1])
+        
+        display = operate(calcNumber1, calcNumber2, operator)
