@@ -4,24 +4,27 @@ function multiply(num1, num2) {return num1 * num2;}
 function divide(num1, num2) {return num1 / num2;}
 
 function operate(num1, num2, operator) {
-    console.log(operator);
+    result = NaN;
     switch(operator) {
         case `+`:
-            return add(num1, num2);
+            result = add(num1, num2);
             break;
         case `-`:
-            return subtract(num1, num2);
+            result = subtract(num1, num2);
             break;
         case `x`:
-            return multiply(num1, num2);
+            result = multiply(num1, num2);
             break;
         case `/`:
-            return divide(num1, num2);
-            break;
-        default:
-            return `ERROR`;
+            result = divide(num1, num2);
             break;
     }
+
+    if (isNaN(result)) {
+        return num1;
+    }
+
+    return result;
 }
 
 let calcNum1 = 0;
@@ -67,5 +70,8 @@ function calculateExpression() {
 
 equals.addEventListener(`click`, calculateExpression)
 clear.addEventListener(`click`, () => {
+    calcNum1 = 0;
+    calcNum2 = 0;
+    calcOperator = ``;
     display.textContent = ``;
 })
